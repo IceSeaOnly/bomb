@@ -1,1 +1,4 @@
-# 业务快速开始工具包
+# Bomb
+excellent visualization database operation tool，based on spring & jpa
+
+* coding... unfinished.
