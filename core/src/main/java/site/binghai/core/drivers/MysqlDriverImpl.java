@@ -1,8 +1,8 @@
 package site.binghai.core.drivers;
 
 import org.springframework.stereotype.Component;
-import site.binghai.core.interfaces.Driver;
-import site.binghai.framework.entity.OptResult;
+import site.binghai.core.def.Driver;
+import site.binghai.framework.entity.Result;
 import site.binghai.core.entity.ConnConfig;
 import site.binghai.framework.utils.BaseBean;
 
@@ -25,8 +25,8 @@ public class MysqlDriverImpl extends BaseBean implements Driver {
     }
 
     @Override
-    public OptResult<Connection> init(ConnConfig cfg) {
-        OptResult<Connection> ret = new OptResult();
+    public Result<Connection> init(ConnConfig cfg) {
+        Result<Connection> ret = new Result();
 
         try {
             Connection conn = _init_(cfg);
@@ -40,8 +40,8 @@ public class MysqlDriverImpl extends BaseBean implements Driver {
     }
 
     @Override
-    public OptResult close(Connection connection) {
-        OptResult<Boolean> ret = new OptResult();
+    public Result close(Connection connection) {
+        Result<Boolean> ret = new Result();
         try {
             connection.close();
         } catch (SQLException e) {

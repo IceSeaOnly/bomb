@@ -3152,9 +3152,9 @@ java.lang.NullPointerException: null
 2018-11-13 21:11:06.457 ERROR 81066 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: java.lang.NullPointerException] with root cause
 
 java.lang.NullPointerException: null
-	at site.binghai.core.core.impl.MysqlClient.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
 	at java.util.ArrayList.forEach(ArrayList.java:1257) ~[na:1.8.0_171]
-	at site.binghai.core.core.impl.MysqlClient.<init>(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.<init>(MysqlClient.java:20) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:33) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:14) ~[classes/:na]
 	at site.binghai.framework.service.AbastractMultiKVCacheService.loadData(AbastractMultiKVCacheService.java:45) ~[classes/:na]
@@ -3273,9 +3273,9 @@ java.lang.NullPointerException: null
 2018-11-14 09:52:22.368 ERROR 81841 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: java.lang.NullPointerException] with root cause
 
 java.lang.NullPointerException: null
-	at site.binghai.core.core.impl.MysqlClient.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
 	at java.util.ArrayList.forEach(ArrayList.java:1257) ~[na:1.8.0_171]
-	at site.binghai.core.core.impl.MysqlClient.<init>(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.<init>(MysqlClient.java:20) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:34) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:15) ~[classes/:na]
 	at site.binghai.framework.service.AbastractMultiKVCacheService.loadData(AbastractMultiKVCacheService.java:45) ~[classes/:na]
@@ -3341,9 +3341,9 @@ java.lang.NullPointerException: null
 2018-11-14 09:54:32.857 ERROR 81841 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: java.lang.NullPointerException] with root cause
 
 java.lang.NullPointerException: null
-	at site.binghai.core.core.impl.MysqlClient.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
 	at java.util.ArrayList.forEach(ArrayList.java:1257) ~[na:1.8.0_171]
-	at site.binghai.core.core.impl.MysqlClient.<init>(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.<init>(MysqlClient.java:20) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:34) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:15) ~[classes/:na]
 	at site.binghai.framework.service.AbastractMultiKVCacheService.loadData(AbastractMultiKVCacheService.java:45) ~[classes/:na]
@@ -3409,9 +3409,9 @@ java.lang.NullPointerException: null
 2018-11-14 09:54:58.808 ERROR 81841 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: java.lang.NullPointerException] with root cause
 
 java.lang.NullPointerException: null
-	at site.binghai.core.core.impl.MysqlClient.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
 	at java.util.ArrayList.forEach(ArrayList.java:1257) ~[na:1.8.0_171]
-	at site.binghai.core.core.impl.MysqlClient.<init>(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.<init>(MysqlClient.java:20) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:34) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:15) ~[classes/:na]
 	at site.binghai.framework.service.AbastractMultiKVCacheService.loadData(AbastractMultiKVCacheService.java:45) ~[classes/:na]
@@ -3477,9 +3477,9 @@ java.lang.NullPointerException: null
 2018-11-14 09:56:27.570 ERROR 81841 --- [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.RuntimeException: java.lang.NullPointerException] with root cause
 
 java.lang.NullPointerException: null
-	at site.binghai.core.core.impl.MysqlClient.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.lambda$new$0(MysqlClient.java:20) ~[classes/:na]
 	at java.util.ArrayList.forEach(ArrayList.java:1257) ~[na:1.8.0_171]
-	at site.binghai.core.core.impl.MysqlClient.<init>(MysqlClient.java:20) ~[classes/:na]
+	at site.binghai.core.core.impl.MysqlClientImpl.<init>(MysqlClient.java:20) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:34) ~[classes/:na]
 	at site.binghai.core.core.impl.ClientManager.load(ClientManager.java:15) ~[classes/:na]
 	at site.binghai.framework.service.AbastractMultiKVCacheService.loadData(AbastractMultiKVCacheService.java:45) ~[classes/:na]
@@ -3601,3 +3601,55 @@ java.lang.NullPointerException: null
 2018-11-14 09:59:42.715  INFO 81877 --- [Thread-14] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2018-11-14 09:59:42.716  INFO 81877 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2018-11-14 09:59:42.722  INFO 81877 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-11-14 17:57:56.366  INFO 3278 --- [main] site.binghai.App                         : Starting App on MacBook-Pro-9.local with PID 3278 (/Users/huaishuo/IdeaProjects/bomb/app/target/classes started by huaishuo in /Users/huaishuo/IdeaProjects/bomb)
+2018-11-14 17:57:56.369  INFO 3278 --- [main] site.binghai.App                         : No active profile set, falling back to default profiles: default
+2018-11-14 17:57:56.637  INFO 3278 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1863d2fe: startup date [Wed Nov 14 17:57:56 CST 2018]; root of context hierarchy
+2018-11-14 17:57:57.722  INFO 3278 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$888773aa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-14 17:57:58.025  INFO 3278 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-11-14 17:57:58.054  INFO 3278 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-11-14 17:57:58.054  INFO 3278 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-11-14 17:57:58.059  INFO 3278 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/huaishuo/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-11-14 17:57:58.185  INFO 3278 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-11-14 17:57:58.186  INFO 3278 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1549 ms
+2018-11-14 17:57:58.317  INFO 3278 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-11-14 17:57:58.323  INFO 3278 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-14 17:57:58.323  INFO 3278 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-14 17:57:58.323  INFO 3278 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-11-14 17:57:58.324  INFO 3278 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-14 17:57:58.484  INFO 3278 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-11-14 17:57:58.957  INFO 3278 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-11-14 17:57:59.007  INFO 3278 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-11-14 17:57:59.022  INFO 3278 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-11-14 17:57:59.109  INFO 3278 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-11-14 17:57:59.111  INFO 3278 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-11-14 17:57:59.161  INFO 3278 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-11-14 17:57:59.288  INFO 3278 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-11-14 17:57:59.921  INFO 3278 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-11-14 17:58:00.482  INFO 3278 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-14 17:58:00.746  INFO 3278 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1863d2fe: startup date [Wed Nov 14 17:57:56 CST 2018]; root of context hierarchy
+2018-11-14 17:58:00.784  WARN 3278 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-11-14 17:58:00.822  INFO 3278 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sql/test/readTables],methods=[GET]}" onto public java.lang.Object site.binghai.core.controller.SqlTest.readTables(java.lang.Long,java.lang.String)
+2018-11-14 17:58:00.825  INFO 3278 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-11-14 17:58:00.825  INFO 3278 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-14 17:58:00.855  INFO 3278 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-14 17:58:00.855  INFO 3278 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-14 17:58:00.915  WARN 3278 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-11-14 17:58:00.919  WARN 3278 --- [main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+2018-11-14 17:58:01.329  INFO 3278 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-11-14 17:58:01.330  INFO 3278 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-11-14 17:58:01.336  INFO 3278 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-11-14 17:58:01.388  INFO 3278 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2018-11-14 17:58:01.392  INFO 3278 --- [main] site.binghai.App                         : Started App in 5.483 seconds (JVM running for 6.384)
+2018-11-14 18:00:01.591  INFO 3278 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-11-14 18:00:01.592  INFO 3278 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-11-14 18:00:01.614  INFO 3278 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 22 ms
+2018-11-14 18:00:01.708  INFO 3278 --- [http-nio-8080-exec-1] s.binghai.core.core.impl.ClientManager   : ConnConfig(id=1, driveType=MYSQL, host=127.0.0.1, port=3306, dbName=dayu, user=root, pass=binghaiadmin, extraCfg=null, coding=null, name=dayu) reload data at 2018-11-14 18:00:01
+2018-11-14 18:00:45.004  WARN 3278 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45s932ms).
+2018-11-14 18:01:33.623  INFO 3278 --- [Thread-15] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1863d2fe: startup date [Wed Nov 14 17:57:56 CST 2018]; root of context hierarchy
+2018-11-14 18:01:33.625  INFO 3278 --- [Thread-15] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-11-14 18:01:33.626  INFO 3278 --- [Thread-15] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2018-11-14 18:01:33.627  INFO 3278 --- [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-11-14 18:01:33.628  INFO 3278 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-11-14 18:01:33.633  INFO 3278 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
