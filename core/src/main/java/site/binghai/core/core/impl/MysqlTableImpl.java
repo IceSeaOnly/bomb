@@ -1,20 +1,15 @@
 package site.binghai.core.core.impl;
 
-import lombok.Data;
 import org.apache.commons.collections.CollectionUtils;
+import site.binghai.core.core.BaseProcess;
 import site.binghai.core.core.Table;
-import site.binghai.core.def.XCousumer;
 import site.binghai.framework.entity.Result;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-public class MysqlTableImpl implements Table {
+public class MysqlTableImpl extends BaseProcess implements Table {
     private List<String> columnNameList;
     private Connection connection;
 
@@ -54,17 +49,23 @@ public class MysqlTableImpl implements Table {
             return new Result<>(columnNameList);
         }
 
-        //process(new Result(), ret -> {
-        //    DatabaseMetaData dbMetaData = connection.getMetaData();
-        //    ResultSet rs = dbMetaData.getTables(null, null, null, new String[] {"TABLE"});
-        //})
-
-        return null;
+        List<String> columnNames = new ArrayList<>();
+        return process(new Result(), ret -> {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + tableName + " LIMIT 1");
+            ResultSet set = stmt.executeQuery();
+            ResultSetMetaData meta = set.getMetaData();
+            //表列数
+            int size = meta.getColumnCount();
+            for (int i = 0; i < size; i++) {
+                columnNames.add(meta.getColumnName(i + 1));
+            }
+            ret.setResult(columnNames);
+        });
     }
 
     @Override
-    public Result<String> getTableName() {
-        return new Result(tableName);
+    public String getTableName() {
+        return tableName;
     }
 
     @Override
@@ -99,12 +100,43 @@ public class MysqlTableImpl implements Table {
         return null;
     }
 
-    private Result process(Result result, XCousumer cousumer) {
-        try {
-            return cousumer.accept(result);
-        } catch (Exception e) {
-            result.setException(e);
-        }
-        return result;
+    public void setColumnNameList(List<String> columnNameList) {
+        this.columnNameList = columnNameList;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
+    public String getTableType() {
+        return tableType;
+    }
+
+    public void setTableType(String tableType) {
+        this.tableType = tableType;
+    }
+
+    public String getDataBaseName() {
+        return dataBaseName;
+    }
+
+    public void setDataBaseName(String dataBaseName) {
+        this.dataBaseName = dataBaseName;
+    }
+
+    public String getTableRemark() {
+        return tableRemark;
+    }
+
+    public void setTableRemark(String tableRemark) {
+        this.tableRemark = tableRemark;
     }
 }

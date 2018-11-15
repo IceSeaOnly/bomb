@@ -9,7 +9,7 @@ public interface Table {
 
     Result<List<String>> getColumnNameList();
 
-    Result<String> getTableName();
+    String getTableName();
 
     Result<Long> getMaxId();
 

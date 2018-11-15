@@ -1,12 +1,12 @@
 package site.binghai.core.core.impl;
 
-import lombok.Data;
+import site.binghai.core.core.BaseProcess;
 import site.binghai.core.core.Client;
 import site.binghai.core.core.Table;
+import site.binghai.framework.entity.Result;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,51 +14,72 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Data
-public class MysqlClientImpl implements Client {
+public class MysqlClientImpl extends BaseProcess implements Client {
     private Connection connection;
     private Map<String, Table> tables;
+    private Boolean initedTable;
 
     public MysqlClientImpl(Connection connection) {
         this.connection = connection;
         this.tables = new HashMap<>();
-        try {
-            loadTable(connection).forEach(v -> tables.put(v.getTableName().getResult(), v));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        this.initedTable = Boolean.FALSE;
     }
 
-    private List<Table> loadTable(Connection connection) throws Exception {
-        List<Table> tables = new ArrayList<>();
+    private synchronized void loadTable() {
+        if (initedTable) {
+            return;
+        }
 
-        DatabaseMetaData dbMetaData = connection.getMetaData();
-        ResultSet rs = dbMetaData.getTables(null, null, null, new String[] {"TABLE"});
-        while (rs.next()) {
-            String tableName = rs.getString("TABLE_NAME");
-            String tableType = rs.getString("TABLE_TYPE");
-            String tableCat = rs.getString("TABLE_CAT");
-            String remarks = rs.getString("REMARKS");
+        Result<List<Table>> ret = new Result();
 
-            Table table = new MysqlTableImpl(connection, tableName, tableType, tableCat, remarks);
-            tables.add(table);
+        process(ret, rt -> {
+            List<Table> tables = new ArrayList<>();
+            DatabaseMetaData dbMetaData = connection.getMetaData();
+            ResultSet rs = dbMetaData.getTables(null, null, null, new String[] {"TABLE"});
+            while (rs.next()) {
+                String tableName = rs.getString("TABLE_NAME");
+                String tableType = rs.getString("TABLE_TYPE");
+                String tableCat = rs.getString("TABLE_CAT");
+                String remarks = rs.getString("REMARKS");
+
+                Table table = new MysqlTableImpl(connection, tableName, tableType, tableCat, remarks);
+                tables.add(table);
+            }
+            ret.setResult(tables);
+        });
+
+        ret.ifPresent(list -> list.forEach(v -> tables.put(v.getTableName(), v)));
+        this.initedTable = Boolean.TRUE;
+    }
+
+    @Override
+    public Result<List<String>> getTableNames() {
+        Result<List<String>> result = new Result<>();
+        process(result, ret -> {
+            List<String> list = getTables().getResult().stream().map(v -> v.getTableName()).collect(Collectors.toList());
+            ret.setResult(list);
+        });
+        return result;
+    }
+
+    private Map<String, Table> getTableMap() {
+        if (!initedTable) {
+            loadTable();
         }
         return tables;
     }
 
-
     @Override
-    public List<String> getTableNames() throws Exception {
-        return tables.values().stream().map(v -> v.getTableName().getResult()).collect(Collectors.toList());
+    public Result<List<Table>> getTables() {
+        List<Table> list = new ArrayList(getTableMap().values());
+        return new Result(list);
     }
 
     @Override
-    public List<Table> getTables() throws Exception {
-        return new ArrayList<>(tables.values());
-    }
-
-    @Override
-    public Table getTable(String tableName) {
-        return tables.get(tableName);
+    public Result<Table> getTable(String tableName) {
+        if (getTableMap().get(tableName) == null) {
+            return new Result(false, "no such table called " + tableName, null, null);
+        }
+        return new Result<>(getTableMap().get(tableName));
     }
 }

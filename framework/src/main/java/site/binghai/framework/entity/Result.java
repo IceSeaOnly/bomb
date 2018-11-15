@@ -4,6 +4,8 @@ import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 @Data
 public class Result<T> {
@@ -51,6 +53,20 @@ public class Result<T> {
         if (result != null && succeed) {
             consumer.accept(result);
         }
+    }
+
+    public T orElseGet(Supplier<T> function) {
+        if (result != null && succeed) {
+            return result;
+        }
+        return function.get();
+    }
+
+    public T orElse(Function<Result, T> function) {
+        if (result != null && succeed) {
+            return result;
+        }
+        return function.apply(this);
     }
 
     public void assertOk() {
