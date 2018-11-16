@@ -1,5 +1,7 @@
 package site.binghai.core.core.impl;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import site.binghai.core.core.BaseProcess;
 import site.binghai.core.core.Client;
 import site.binghai.core.core.Table;
@@ -15,21 +17,26 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MysqlClientImpl extends BaseProcess implements Client {
+    @JsonIgnore
+    @JSONField(serialize=false)
     private Connection connection;
     private Map<String, Table> tables;
     private Boolean initedTable;
+    private String dbName;
 
-    public MysqlClientImpl(Connection connection) {
+    public MysqlClientImpl(Connection connection,String dbName) {
         this.connection = connection;
         this.tables = new HashMap<>();
         this.initedTable = Boolean.FALSE;
+        this.dbName = dbName;
+        System.out.println(String.format("MysqlClientImpl for DB %s created",dbName));
     }
 
     private synchronized void loadTable() {
         if (initedTable) {
             return;
         }
-
+        System.out.println(String.format("MysqlClientImpl for DB %s loading tables",dbName));
         Result<List<Table>> ret = new Result();
 
         process(ret, rt -> {
@@ -50,6 +57,11 @@ public class MysqlClientImpl extends BaseProcess implements Client {
 
         ret.ifPresent(list -> list.forEach(v -> tables.put(v.getTableName(), v)));
         this.initedTable = Boolean.TRUE;
+    }
+
+    @Override
+    public String getDbName() {
+        return dbName;
     }
 
     @Override

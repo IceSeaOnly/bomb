@@ -30,9 +30,9 @@ public class ClientManager extends AbastractMultiKVCacheService<ConnConfig, Clie
                 Driver driver = new MysqlDriverImpl();
                 ret = driver.init(cfg);
                 ret.assertOk();
-                return new MysqlClientImpl(ret.getResult());
+                return new MysqlClientImpl(ret.getResult(), cfg.getDbName());
             default:
-                logger.error("no suitable client for this config:{}",cfg);
+                logger.error("no suitable client for this config:{}", cfg);
                 throw new RuntimeException("no suitable client for this config!");
         }
     }

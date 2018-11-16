@@ -1,7 +1,9 @@
 package site.binghai.core.core.impl;
 
-import org.apache.commons.collections.CollectionUtils;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import site.binghai.core.core.BaseProcess;
+import site.binghai.core.core.Column;
 import site.binghai.core.core.Table;
 import site.binghai.framework.entity.Result;
 
@@ -10,8 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MysqlTableImpl extends BaseProcess implements Table {
-    private List<String> columnNameList;
+    @JsonIgnore
+    @JSONField(serialize=false)
     private Connection connection;
+    private List<Column> columns;
+    private Boolean inited;
 
     private String tableName;
     private String tableType;
@@ -20,12 +25,14 @@ public class MysqlTableImpl extends BaseProcess implements Table {
 
     public MysqlTableImpl(Connection connection, String tableName, String tableType,
                           String dataBaseName, String tableRemark) {
-        this.columnNameList = new ArrayList<>();
+        this.columns = new ArrayList<>();
         this.connection = connection;
         this.tableName = tableName;
         this.tableType = tableType;
         this.dataBaseName = dataBaseName;
         this.tableRemark = tableRemark;
+        this.inited = Boolean.FALSE;
+        System.out.println(String.format("MysqlTableImpl for table %s created.", tableName));
     }
 
     @Override
@@ -44,23 +51,42 @@ public class MysqlTableImpl extends BaseProcess implements Table {
     }
 
     @Override
-    public Result<List<String>> getColumnNameList() {
-        if (!CollectionUtils.isEmpty(columnNameList)) {
-            return new Result<>(columnNameList);
-        }
+    public Result<List<Column>> getColumnNameList() {
+        return new Result(getColumns());
+    }
 
-        List<String> columnNames = new ArrayList<>();
-        return process(new Result(), ret -> {
+    private synchronized void loadColumn() {
+        if (inited) {
+            return;
+        }
+        System.out.println(String.format("MysqlTableImpl for table %s loading columns.", tableName));
+        Result<List<Column>> res = new Result();
+        process(res, ret -> {
+            List<Column> columns = new ArrayList<>();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + tableName + " LIMIT 1");
             ResultSet set = stmt.executeQuery();
             ResultSetMetaData meta = set.getMetaData();
             //表列数
             int size = meta.getColumnCount();
             for (int i = 0; i < size; i++) {
-                columnNames.add(meta.getColumnName(i + 1));
+                Column column = new MysqlColumnImpl(
+                    meta.getColumnName(i + 1),
+                    meta.getTableName(i + 1),
+                    meta.getColumnTypeName(i + 1),
+                    true,
+                    meta.isNullable(i + 1) == 1,
+                    true,
+                    true,
+                    -1,
+                    meta.getPrecision(i + 1),
+                    meta.getScale(i + 1)
+                );
+                columns.add(column);
             }
-            ret.setResult(columnNames);
+            ret.setResult(columns);
         });
+        res.ifPresent(list -> columns.addAll(list));
+        inited = Boolean.TRUE;
     }
 
     @Override
@@ -100,10 +126,6 @@ public class MysqlTableImpl extends BaseProcess implements Table {
         return null;
     }
 
-    public void setColumnNameList(List<String> columnNameList) {
-        this.columnNameList = columnNameList;
-    }
-
     public Connection getConnection() {
         return connection;
     }
@@ -138,5 +160,16 @@ public class MysqlTableImpl extends BaseProcess implements Table {
 
     public void setTableRemark(String tableRemark) {
         this.tableRemark = tableRemark;
+    }
+
+    public List<Column> getColumns() {
+        if (!inited) {
+            loadColumn();
+        }
+        return columns;
+    }
+
+    public void setColumns(List<Column> columns) {
+        this.columns = columns;
     }
 }

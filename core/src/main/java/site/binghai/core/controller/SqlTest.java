@@ -35,7 +35,8 @@ public class SqlTest extends BaseController {
                 return success(ret, null);
             }
 
-            return client.getTable(table).orElseGet(null);
+            logger.info("read table:{}", client.getTable(table).orElseGet(null));
+            return success();
         } catch (Exception e) {
             return fail(e.getMessage());
         }

@@ -16,6 +16,20 @@ public class MysqlColumnImpl implements Column {
     private int precision;
     private int scale;
 
+    public MysqlColumnImpl(String name, String tableName, String columnDefinition, boolean unique, boolean unllable,
+                           boolean insertable, boolean updatable, int length, int precision, int scale) {
+        this.name = name;
+        this.tableName = tableName;
+        this.columnDefinition = columnDefinition;
+        this.unique = unique;
+        this.unllable = unllable;
+        this.insertable = insertable;
+        this.updatable = updatable;
+        this.length = length;
+        this.precision = precision;
+        this.scale = scale;
+    }
+
     @Override
     public String name() {
         return name;

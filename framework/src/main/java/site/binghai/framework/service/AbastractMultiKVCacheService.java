@@ -27,7 +27,7 @@ public abstract class AbastractMultiKVCacheService<K, V> extends BaseBean {
     }
 
     private boolean expired(Pair<Long, V> val) {
-        if (val.getKey() < 0) { return false; }
+        if (expiredSecs < 0) { return false; }
         return now() - val.getKey() > expiredSecs;
     }
 

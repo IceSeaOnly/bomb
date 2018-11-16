@@ -7,7 +7,7 @@ import java.util.List;
 public interface Table {
     Result<String> showCreateSql();
 
-    Result<List<String>> getColumnNameList();
+    Result<List<Column>> getColumnNameList();
 
     String getTableName();
 
