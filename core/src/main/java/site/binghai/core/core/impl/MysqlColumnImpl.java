@@ -1,9 +1,9 @@
 package site.binghai.core.core.impl;
 
-import lombok.Data;
+import lombok.ToString;
 import site.binghai.core.core.Column;
 
-
+@ToString
 public class MysqlColumnImpl implements Column {
     private String name;
     private String tableName;
@@ -79,4 +79,6 @@ public class MysqlColumnImpl implements Column {
     public int scale() {
         return scale;
     }
+
+
 }

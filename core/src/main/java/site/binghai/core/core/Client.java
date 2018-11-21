@@ -5,6 +5,8 @@ import site.binghai.framework.entity.Result;
 import java.util.List;
 
 public interface Client {
+    Long getDbId();
+
     String getDbName();
 
     Result<List<String>> getTableNames();

@@ -3,6 +3,7 @@ package site.binghai.core.core;
 import site.binghai.framework.entity.Result;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Table {
     Result<String> showCreateSql();

@@ -18,25 +18,27 @@ import java.util.stream.Collectors;
 
 public class MysqlClientImpl extends BaseProcess implements Client {
     @JsonIgnore
-    @JSONField(serialize=false)
+    @JSONField(serialize = false)
     private Connection connection;
     private Map<String, Table> tables;
     private Boolean initedTable;
     private String dbName;
+    private Long dbId;
 
-    public MysqlClientImpl(Connection connection,String dbName) {
+    public MysqlClientImpl(Connection connection, String dbName, Long dbId) {
         this.connection = connection;
         this.tables = new HashMap<>();
         this.initedTable = Boolean.FALSE;
         this.dbName = dbName;
-        System.out.println(String.format("MysqlClientImpl for DB %s created",dbName));
+        this.dbId = dbId;
+        System.out.println(String.format("MysqlClientImpl for DB %s created", dbName));
     }
 
     private synchronized void loadTable() {
         if (initedTable) {
             return;
         }
-        System.out.println(String.format("MysqlClientImpl for DB %s loading tables",dbName));
+        System.out.println(String.format("MysqlClientImpl for DB %s loading tables", dbName));
         Result<List<Table>> ret = new Result();
 
         process(ret, rt -> {
@@ -60,6 +62,11 @@ public class MysqlClientImpl extends BaseProcess implements Client {
     }
 
     @Override
+    public Long getDbId() {
+        return dbId;
+    }
+
+    @Override
     public String getDbName() {
         return dbName;
     }
@@ -68,7 +75,8 @@ public class MysqlClientImpl extends BaseProcess implements Client {
     public Result<List<String>> getTableNames() {
         Result<List<String>> result = new Result<>();
         process(result, ret -> {
-            List<String> list = getTables().getResult().stream().map(v -> v.getTableName()).collect(Collectors.toList());
+            List<String> list = getTables().getResult().stream().map(v -> v.getTableName()).collect(
+                Collectors.toList());
             ret.setResult(list);
         });
         return result;

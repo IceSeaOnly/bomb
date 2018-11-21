@@ -13,7 +13,7 @@ import java.util.Objects;
 
 @Data
 @Entity
-public class ConnConfig extends BaseEntity {
+public class DataBaseConfig extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;
@@ -35,16 +35,12 @@ public class ConnConfig extends BaseEntity {
     public boolean equals(Object o) {
         if (this == o) { return true; }
         if (o == null || getClass() != o.getClass()) { return false; }
-        ConnConfig that = (ConnConfig)o;
+        DataBaseConfig that = (DataBaseConfig)o;
         return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    public String getCfgId() {
-        return MD5.encryption(JSON.toJSONString(this));
     }
 }

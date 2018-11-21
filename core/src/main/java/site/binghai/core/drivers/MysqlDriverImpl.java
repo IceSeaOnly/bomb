@@ -3,7 +3,7 @@ package site.binghai.core.drivers;
 import org.springframework.stereotype.Component;
 import site.binghai.core.def.Driver;
 import site.binghai.framework.entity.Result;
-import site.binghai.core.entity.ConnConfig;
+import site.binghai.core.entity.DataBaseConfig;
 import site.binghai.framework.utils.BaseBean;
 
 import java.sql.*;
@@ -13,7 +13,7 @@ public class MysqlDriverImpl extends BaseBean implements Driver {
     private static final String BASE_URL = "jdbc:mysql://";
     private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
 
-    private Connection _init_(ConnConfig config) throws Exception {
+    private Connection _init_(DataBaseConfig config) throws Exception {
         Connection conn;
         String url = BASE_URL + config.getHost() + ":" + config.getPort() + "/" + config.getDbName();
         Class.forName(DRIVER_NAME);
@@ -25,7 +25,7 @@ public class MysqlDriverImpl extends BaseBean implements Driver {
     }
 
     @Override
-    public Result<Connection> init(ConnConfig cfg) {
+    public Result<Connection> init(DataBaseConfig cfg) {
         Result<Connection> ret = new Result();
 
         try {
