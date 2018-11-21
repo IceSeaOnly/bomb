@@ -22,6 +22,11 @@
             <artifactId>framework</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <!--多模块打包：只需在启动类所在模块的POM文件：指定打包插件 -->

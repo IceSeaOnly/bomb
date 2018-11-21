@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import site.binghai.core.core.Client;
 import site.binghai.core.core.Column;
+import site.binghai.core.service.ConversationService;
 import site.binghai.core.service.DataBaseConfigService;
 import site.binghai.core.core.impl.ClientManager;
 import site.binghai.core.entity.DataBaseConfig;
@@ -16,9 +17,11 @@ public class SqlTest extends BaseBean implements InitializingBean {
     private DataBaseConfigService dataBaseConfigService;
     @Autowired
     private ClientManager clientManager;
+    @Autowired
+    private ConversationService conversationService;
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    //@Override
+    public void _afterPropertiesSet() throws Exception {
         logger.info("\n\n\n");
         DataBaseConfig cfg = dataBaseConfigService.findById(1L);
         Client client = clientManager.get(cfg);
@@ -39,5 +42,10 @@ public class SqlTest extends BaseBean implements InitializingBean {
         });
 
         logger.info("\n\n\n");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
     }
 }
